@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<!-- Appenders are used to include where the logs have to be written (console or file)-->
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<!-- this is to print in console-->
+			<!-- patterns are used to customize the logging in our logs-->
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+	</Appenders>
+
+	<!-- Loggers are used for what to log, such as error messages only,all logs etc-->
+	<Loggers>
+		<!-- itmes to be logged should be defined under root tag with logging type, error or trace etc - trace is used to log everything-->
+		<!-- to log differntly for a specific packages or class we can define custom loggers-->
+		<Logger name="log4j2.tutorial.demo2" level="error" additivity="false">
+			<!-- additivity = "false" is used to avoid duplicate logging on root level-->
+			<AppendRef ref="Console" />
+		</Logger>
+		<Root level="trace">
+			<!-- give the where to log reference to what to log-->
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration> 
+
+<!-- after all the configuration is completed, we have to add the this config to project build path under sources-->
